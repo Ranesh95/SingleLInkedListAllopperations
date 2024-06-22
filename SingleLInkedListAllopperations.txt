@@ -1,0 +1,138 @@
+/**
+ * singleLinked
+ */
+public  class  singleLinked {
+
+    private listNode head;
+
+    public static  class listNode
+    {
+        private int data;
+        private listNode next;
+      public   listNode(int data)
+        {
+            this.data =data;
+            this.next =null;
+        }
+
+    }
+    
+    public  int length()
+    {
+        if(head==null)
+        {
+            return 0;
+        }
+        int count =0;
+        listNode temp =head;
+        while (temp!=null) 
+        {
+            count++;
+            temp =temp.next;
+            
+        }
+        return count;
+        
+    }
+    public void beg()
+    {
+        listNode newNode =new listNode(2);
+        newNode.next =head;
+        head =newNode;
+
+    }
+    //10 11  12  13  20
+    public void insertatposition(int posi,int val)
+    {
+        listNode node1 =new listNode(val);
+        if(posi==1)
+        {
+            node1.next =head;
+            head =node1;
+        }
+        else
+        {
+            listNode prev =head;
+            int count  =1;
+            while (count<posi-1) {
+                prev =prev.next;
+                count++;
+            }
+            listNode temp =prev.next;
+            node1.next =temp;
+            prev.next =node1;
+        }
+
+    }
+    public void end()
+    {
+        listNode newnoNode =new listNode(20);
+        if(head==null)
+        {
+            head =newnoNode;
+            return;
+        }
+        listNode temp =head;
+        while (temp.next!=null) {
+            temp =temp.next;
+        }
+        temp.next =newnoNode;
+    }
+    public void spec()
+    {
+        listNode sp =new listNode(30);
+        if(head==null)
+        {
+            head =sp;
+            return;
+        }
+        listNode temp = head;
+        while (temp.next!=null) {
+            temp.next =sp;
+            
+        }
+    }
+    public void deleteatend()
+    {
+        listNode temp  =head;
+        temp.next=head;
+
+    }
+    public void display()
+    {
+        listNode temp =head;
+        while (temp.next!=null) {
+            System.out.println(temp.data);
+            temp =temp.next;
+            
+        }
+        System.out.println("null");
+    }
+    public static void main(String[] args) {
+        singleLinked n1 =new singleLinked();
+        n1.head =new listNode(10);
+        listNode second =new listNode(11);
+        listNode third =new listNode(12);
+        listNode fourth =new listNode(13);
+
+        n1.head.next =second;
+        second.next =third;
+        third.next =fourth;
+        fourth.next =null;
+        //n1.display();
+        //System.out.println(n1.length());
+        //n1.beg();
+        //n1.display();
+        n1.end();
+        n1.end();
+        n1.display();
+        n1.spec();
+        n1.spec();
+        n1.display();
+        n1.deleteatend();
+        n1.display();
+        
+
+        
+    }
+}
